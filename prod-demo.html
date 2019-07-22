@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+    <link rel="stylesheet" href="prod-demo.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div class="layout">
+        <h1>珠宝首饰</h1>
+        <ul class="prodList clearfix">
+            <li class="prod">
+                <div class="cover">
+                    <a href="#" class="btn btn-delete">删除</a>
+                </div>
+                <a href="#">
+                    <img src="https://picsum.photos/200/200/?image=1" alt="">
+                    <div class="prod-name">藏美 千足金</div>
+                    <div class="prod-price">￥ 1699.00</div>
+                </a>
+            </li>
+            <li class="prod">
+                <div class="cover">
+                    <a href="#" class="btn btn-delete">删除</a>
+                </div>
+                <a href="#">
+                    <img src="https://picsum.photos/200/200/?image=6" alt="">
+                    <div class="prod-name">藏美 千足金</div>
+                    <div class="prod-price">￥ 1699.00</div>
+                </a>
+            </li>
+            <li class="prod">
+                <div class="cover">
+                    <a href="#" class="btn btn-delete">删除</a>
+                </div>
+                <a href="#">
+                    <img src="https://picsum.photos/200/200/?image=16" alt="">
+                    <div class="prod-name">藏美 千足金</div>
+                    <div class="prod-price">￥ 1699.00</div>
+                </a>
+            </li>
+        </ul>
+
+        <a href="#" class="btn btn-add">添加</a>
+        <a href="#" class="btn btn-edit">编辑</a>
+    </div>
+
+    <script>
+        function getProdHtml(prod) {
+            var html = ''
+            html += '<li class="prod">';
+            html +=   '<div class="cover"><a class="btn btn-delete" href="#">删除</a></div>'
+            html +=    '<a href="#">'
+            html +=      '<img src="'+prod.img+'" alt="">'
+            html +=      '<div class="prod-name">'+prod.name+'</div>'
+            html +=      '<div class="prod-price">'+prod.price+'</div>'
+            html +=    '</a>'
+            html += '</li>';
+            return html;
+        }
+
+        function getData() {
+            var results = []
+            for (var i = 0; i < 3; i++) {
+                var rand = Math.floor(Math.random() * 100)
+                var products = {
+                    img: 'https://picsum.photos/200/200/?image=' + rand,
+                    name: '富士山 血轮眼',
+                    price: '￥' + rand
+                }
+                results.push(products)
+            }
+            return results
+        }
+
+        $('.btn-add').on('click', function(e) {
+            e.preventDefault()
+            $('.prod').removeClass('hover')
+            var products = getData()
+            $.each(products, function(idx, prod) {
+                var html = getProdHtml(prod)
+                $('.prodList').append(html)
+            })
+            
+        })
+
+        $('.btn-edit').on('click', function(e) {
+            e.preventDefault()
+            $('.prod').toggleClass('hover')
+        })
+
+        $('.prodList').on('click', '.btn-delete',function(e) {
+            e.preventDefault()
+            if ($(e.target).parent().css('opacity') !== '0') {
+                $(e.target).parents('.prod').remove()
+            }
+        })
+    </script>
+</body>
+</html>

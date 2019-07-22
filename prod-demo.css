@@ -1,0 +1,101 @@
+/* reset & common */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    font: 12px/150% Arial;
+    color: #666;
+}
+
+a {
+    text-decoration: none;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-align: center;
+    color: #c81623;
+    border: 1px solid #c81623;
+    border-radius: 3px;
+    margin-right: 15px;
+}
+/* style */
+.layout {
+    width: 702px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.prod {
+    position: relative;
+    float: left;
+    width: 220px;
+    margin-right: 20px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 1px solid #666;
+    text-align: center;
+}
+
+.prodList {
+    margin-right: -20px;
+}
+
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    transition: all 0.3s;
+    opacity: 0;
+}
+
+.cover .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.prod.hover .cover {
+    opacity: 1;
+}
+
+.prod img {
+    width: 100%;
+    height: 100%;
+}
+
+.prod-name {
+    text-align: left;
+    height: 36px;
+}
+
+.prod-price {
+    text-align: left;
+    color: #c81623;
+}
+
+.btn-add, .btn-edit {
+    margin-top: 20px;
+
+}
